@@ -217,7 +217,7 @@ export const MOCK_PROJECTS = [
   {
     id: 'MPLAD-2026-00342',
     name: 'Primary Health Centre (PHC) Medical Oxygen Pipeline',
-    images: { uploaded: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&auto=format&fit=crop&q=80' },
+    images: { uploaded: '/projects/medicaloxygen.jpg' },
     category: 'Public Health',
     location: 'Baramati Rural Hospital',
     district: 'Pune',
@@ -246,6 +246,7 @@ export const MOCK_PROJECTS = [
   {
     id: 'MPLAD-2026-00518',
     name: 'High-Mast LED Street Lighting (50 Junctions)',
+    images: { uploaded: '/projects/ledstreetlight.jpg' },
     category: 'Energy & Lighting',
     location: 'Guwahati Metropolitan Area',
     district: 'Kamrup Metro',

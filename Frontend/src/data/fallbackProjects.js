@@ -321,6 +321,96 @@ export const FALLBACK_PROJECTS = [
       { stage: "Audit Sign-off", date: "Flagged", status: "pending" },
       { stage: "Commissioning", date: "Pending", status: "pending" }
     ]
+  },
+  {
+    id: "MPLAD-2026-00342",
+    name: "Primary Health Centre (PHC) Medical Oxygen Pipeline",
+    category: "Health & Family Welfare",
+    location: "Baramati Rural Hospital, Pune, Maharashtra",
+    district: "Pune",
+    state: "Maharashtra",
+    mpName: "Smt. Supriya Sule (Baramati PC)",
+    implementingAgency: "Public Works Department (PWD Pune)",
+    contractor: "Lifecare Gas Grid Corp",
+    sanctionedAmount: 6400000,
+    releasedAmount: 5000000,
+    utilizedAmount: 4800000,
+    remainingAmount: 1600000,
+    sanctionDate: "2025-03-15",
+    startDate: "2025-04-10",
+    targetDate: "2025-10-30",
+    currentStage: "Commissioned & Certified Operational",
+    progressPercent: 100,
+    status: "COMPLETED",
+    riskScore: 24,
+    riskLevel: "LOW",
+    coordinates: [18.5204, 73.8567],
+    lastUpdated: new Date().toISOString(),
+    slaDaysLeft: 60,
+    slaUrgency: "SAFE",
+    images: {
+      uploaded: "/projects/medicaloxygen.jpg"
+    },
+    anomalies: [],
+    overrunProbability: 0.04,
+    mlAnomalyScore: 18.2,
+    timeline: [
+      { stage: "Work Sanctioned", date: "15 Mar 2025", status: "completed" },
+      { stage: "Pipeline Installation", date: "20 May 2025", status: "completed" },
+      { stage: "Pressure Testing", date: "15 Jul 2025", status: "completed" },
+      { stage: "Oxygen Flow Validation", date: "10 Sep 2025", status: "completed" },
+      { stage: "Final Commissioning", date: "15 Oct 2025", status: "completed" }
+    ]
+  },
+  {
+    id: "MPLAD-2026-00518",
+    name: "High-Mast LED Street Lighting (50 Junctions)",
+    category: "Public Safety & Electrification",
+    location: "Guwahati Metropolitan Area, Kamrup Metro, Assam",
+    district: "Kamrup Metro",
+    state: "Assam",
+    mpName: "Smt. Queen Oja (Gauhati PC)",
+    implementingAgency: "Guwahati Smart City Dev Corp",
+    contractor: "Apex Infra & BuildTech Pvt Ltd",
+    sanctionedAmount: 2900000,
+    releasedAmount: 2900000,
+    utilizedAmount: 1200000,
+    remainingAmount: 1700000,
+    sanctionDate: "2025-07-22",
+    startDate: "2025-09-01",
+    targetDate: "2026-04-30",
+    currentStage: "Mast Erection & Cabling",
+    progressPercent: 40,
+    status: "FLAGGED",
+    riskScore: 63.4,
+    riskLevel: "MEDIUM",
+    coordinates: [26.1445, 91.7362],
+    lastUpdated: new Date().toISOString(),
+    slaDaysLeft: 8,
+    slaUrgency: "MEDIUM",
+    images: {
+      uploaded: "/projects/ledstreetlight.jpg"
+    },
+    anomalies: [
+      {
+        id: "MPLAD-2026-00518-AI-1",
+        type: "VENDOR_CARTEL",
+        title: "Contractor Investigation Cross-Border Match",
+        severity: "HIGH",
+        confidence: 88,
+        description: "Apex Infra & BuildTech shares directorship patterns with flagged entities under scrutiny in UP.",
+        evidence: "Centralized Pan-India Vendor Tracking Flag."
+      }
+    ],
+    overrunProbability: 0.65,
+    mlAnomalyScore: 63.4,
+    timeline: [
+      { stage: "Work Sanctioned", date: "22 Jul 2025", status: "completed" },
+      { stage: "Tender Awarded", date: "15 Aug 2025", status: "completed" },
+      { stage: "Mast Delivery & Foundations", date: "20 Nov 2025", status: "completed" },
+      { stage: "Electrical Grid Sync", date: "In Progress", status: "in-progress" },
+      { stage: "Final Commissioning", date: "Pending", status: "pending" }
+    ]
   }
 ];
 

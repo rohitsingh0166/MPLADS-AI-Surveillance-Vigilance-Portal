@@ -59,6 +59,64 @@ function mapAssessment(a) {
   };
 }
 
+export function resolveProjectImage(p) {
+  if (!p) return '/projects/ruralroad.jpg';
+
+  const rawImage = p.images?.uploaded || p.evidence_image_url;
+  
+  // If we already have a real JPEG/PNG/WebP photo, return it directly!
+  if (rawImage && typeof rawImage === 'string' && !rawImage.endsWith('.svg') && !rawImage.includes('/evidence/MPLAD-')) {
+    return rawImage;
+  }
+
+  const id = (p.id || p.project_id || '').toUpperCase();
+  const name = (p.name || p.title || '').toLowerCase();
+  const category = (p.category || '').toLowerCase();
+
+  // 1. Direct ID / Variant ID Mappings to our Authentic High-Quality Photography Assets:
+  if (id.includes('00089') || id.includes('00503') || id.includes('00711') || id.includes('00801')) {
+    return '/projects/smartclassroom.jpg';
+  }
+  if (id.includes('00342') || id.includes('00312') || id.includes('00504')) {
+    return '/projects/medicaloxygen.jpg';
+  }
+  if (id.includes('00518') || id.includes('00789') || id.includes('00710') || id.includes('00232')) {
+    return '/projects/ledstreetlight.jpg';
+  }
+  if (id.includes('00451') || id.includes('00126') || id.includes('00712') || id.includes('00802')) {
+    return '/projects/solarwater.jpg';
+  }
+  if (id.includes('00231') || id.includes('00506') || id.includes('00090')) {
+    return '/projects/communityhall.jpg';
+  }
+  if (id.includes('00124') || id.includes('00125') || id.includes('00127') || id.includes('00502') || id.includes('00505') || id.includes('00092')) {
+    return '/projects/ruralroad.jpg';
+  }
+
+  // 2. Semantic Keyword & Sector Mapping:
+  if (name.includes('oxygen') || name.includes('health') || name.includes('hospital') || name.includes('phc') || name.includes('maternity') || category.includes('health')) {
+    return '/projects/medicaloxygen.jpg';
+  }
+  if (name.includes('lighting') || name.includes('light') || name.includes('led') || name.includes('mast') || name.includes('lamp') || name.includes('solar light') || category.includes('lighting') || category.includes('energy')) {
+    return '/projects/ledstreetlight.jpg';
+  }
+  if (name.includes('classroom') || name.includes('school') || name.includes('computer') || name.includes('lab') || name.includes('smart') || category.includes('education')) {
+    return '/projects/smartclassroom.jpg';
+  }
+  if (name.includes('water') || name.includes('borewell') || name.includes('ro plant') || name.includes('tube well') || category.includes('water')) {
+    return '/projects/solarwater.jpg';
+  }
+  if (name.includes('hall') || name.includes('bhavan') || name.includes('gazebo') || name.includes('library') || category.includes('community')) {
+    return '/projects/communityhall.jpg';
+  }
+  if (name.includes('road') || name.includes('paver') || name.includes('interlocking') || name.includes('pavement') || name.includes('drain') || name.includes('culvert') || category.includes('road')) {
+    return '/projects/ruralroad.jpg';
+  }
+
+  // 3. Fallback to default authentic civil work photography
+  return '/projects/ruralroad.jpg';
+}
+
 function mapProject(p, assessment) {
   const fallback = FALLBACK_PROJECTS.find(fb => fb.id.toLowerCase() === (p.project_id || p.id || '').toLowerCase());
   const a = mapAssessment(assessment || {
@@ -67,8 +125,14 @@ function mapProject(p, assessment) {
     explainable_flags: fallback?.anomalies?.map(x => x.title) || []
   });
 
-  // Preserve image from fallback if configured (e.g. /projects/ruralroad.jpg), then evidence_image_url, then fallback
-  const uploadedImage = fallback?.images?.uploaded || p.evidence_image_url || p.images?.uploaded;
+  const uploadedImage = resolveProjectImage({
+    ...p,
+    name: p.title || p.name,
+    category: p.category,
+    id: p.project_id || p.id,
+    images: { uploaded: fallback?.images?.uploaded || p.images?.uploaded },
+    evidence_image_url: p.evidence_image_url
+  });
 
   return {
     id: p.project_id || p.id,

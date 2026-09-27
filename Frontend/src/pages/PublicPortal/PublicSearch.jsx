@@ -3,7 +3,7 @@ import { Link, useSearchParams, useNavigate } from 'react-router-dom';
 import { ShieldCheck, Search, MapPin, CheckCircle2, ArrowRight, Eye, Camera, Filter, Home, Layers } from 'lucide-react';
 import { Button } from '../../components/common/Button';
 import { PublicHeader } from '../../components/layout/PublicHeader';
-import { api } from '../../services/api';
+import { api, resolveProjectImage } from '../../services/api';
 import { formatINR } from '../../utils/helpers';
 import { FALLBACK_PROJECTS } from '../../data/fallbackProjects';
 import { ScrollReveal } from '../../components/common/ScrollReveal';
@@ -134,11 +134,11 @@ export const PublicSearch = () => {
                   {/* Photo Thumbnail */}
                   <div className="relative aspect-video rounded-lg overflow-hidden border border-slate-200 bg-slate-100 mb-3">
                     <img
-                      src={p.images?.uploaded || "/projects/ruralroad.jpg"}
+                      src={resolveProjectImage(p)}
                       alt={p.name}
                       onError={(e) => {
                         e.currentTarget.onerror = null;
-                        e.currentTarget.src = "https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?w=600&auto=format&fit=crop&q=80";
+                        e.currentTarget.src = "/projects/ruralroad.jpg";
                       }}
                       className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-300"
                     />
