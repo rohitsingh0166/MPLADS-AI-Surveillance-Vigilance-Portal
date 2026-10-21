@@ -1,15 +1,86 @@
-# Node
-node_modules/
-dist/
-dist-ssr/
-*.local
-
-# Python
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
-.env
-.venv
-env/
+*.so
+
+# C++ Object files & Executables
+*.o
+*.obj
+*.exe
+*.out
+*.app
+
+# Virtual Environments
 venv/
+env/
+ENV/
+.venv/
+env.bak/
+venv.bak/
+
+# Package Builds & Distributions
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Secrets & Environment Variables (CRITICAL)
+.env
+.env.*
+!.env.example
+secrets.json
+
+# Caches & Tooling
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+*.log
+
+# Deep Learning / Large Model Weights & Large Datasets
+*.pt
+*.pth
+*.bin
+*.onnx
+*.safetensors
+*.h5
+*.hdf5
+dataset/
+data/
+downloads/
+
+# Archives & Bloat
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Frontend / Node
+node_modules/
+.next/
+out/
+.npm
+npm-debug.log*
+
+# OS Metadata & IDEs
 .DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*.swo
+.gemini/
